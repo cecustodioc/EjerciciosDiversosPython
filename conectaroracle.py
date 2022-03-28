@@ -7,8 +7,13 @@ Created on Mon Feb 21 09:27:34 2022
 import cx_Oracle
 import pandas as pd
 try: 
-    dsn = cx_Oracle.makedsn("192.168.2.6", 1521, service_name="escolar")
-    conn = cx_Oracle.connect(user="datos", password="datos2019", dsn=dsn,
+    direccion = input("Dirección del servidor (IP): ")
+    puerto = 1521
+    servicio = input("Nombre del servicio: ")
+    usuario = input("Usuario: ")
+    contraseña = input("Contraseña: ")
+    dsn = cx_Oracle.makedsn(direccion, puerto, service_name = servicio)
+    conn = cx_Oracle.connect(user = usuario, password = contraseña, dsn=dsn,
                                encoding="UTF-8")
     sql = "select * from ciclos order by ciclo desc"
     cursor = conn.cursor()
